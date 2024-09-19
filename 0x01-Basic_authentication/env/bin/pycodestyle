@@ -1,0 +1,8 @@
+#!/home/mohamed/Desktop/Alx/ec2f874b061bd3a2915949f081f4f5f055104f20/SimpleAPI/env/bin/python3
+# -*- coding: utf-8 -*-
+import re
+import sys
+from pycodestyle import _main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(_main())
