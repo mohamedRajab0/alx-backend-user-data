@@ -38,7 +38,7 @@ class DB:
         session.commit()
         return user
 
-    def find_user_by(self, **kwargs) -> User:
+    def find_user_by(self, **kwargs):
         """
         Find a user by arbitrary keyword arguments.
         
@@ -48,16 +48,18 @@ class DB:
         :raises InvalidRequestError: If the query is invalid.
         """
         try:
-            session = self._session  # Access session
+            session = self._session  # Ensure session is accessed correctly
             user = session.query(User).filter_by(**kwargs).first()
             
             if user is None:
-                raise NoResultFound  # Raise exception if no user is found
+                return None  # No need to raise NoResultFound
             
             return user
         
         except InvalidRequestError as e:
             raise InvalidRequestError("Invalid query arguments provided") from e
+
+
 
     def update_user(self, user_id: int, **kwargs) -> User:
         """
